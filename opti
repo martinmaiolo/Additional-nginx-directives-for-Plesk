@@ -1,0 +1,13 @@
+gzip on;
+gzip_disable "MSIE [1-6]\\.(?!.*SV1)";
+gzip_proxied any;
+gzip_comp_level 5;
+gzip_types text/plain text/css application/javascript application/x-javascript text/xml application/xml application/rss+xml text/javascript image/x-icon image/bmp image/svg+xml;
+gzip_vary on;
+
+location ~* .(js|jpg|jpeg|gif|png|css|tgz|gz|rar|bz2|doc|pdf|ppt|tar|wav|bmp|rtf|swf|ico|flv|txt|woff|woff2|svg)$ {
+	etag on;
+	if_modified_since exact;
+	add_header Pragma "public";
+	add_header Cache-Control "max-age=31536000, public";
+}
